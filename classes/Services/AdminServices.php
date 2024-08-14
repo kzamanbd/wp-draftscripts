@@ -41,8 +41,17 @@ class AdminServices extends BaseApplication
                 'menu_title' => 'CPT',
                 'capability' => 'manage_options',
                 'menu_slug' => 'draftscripts-cpt',
-                'callback' => array($this, 'index')
+                'callback' => array($this, 'customPost')
             ],
+            [
+                'parent_slug' => 'draftscripts',
+                'page_title' => 'Settings',
+                'menu_title' => 'Settings',
+                'capability' => 'manage_options',
+                'menu_slug' => 'draftscripts-settings',
+                'callback' => array($this, 'customPost')
+            ]
+
         ];
 
         $this->settings->addPages($this->pages)
@@ -53,12 +62,11 @@ class AdminServices extends BaseApplication
     public function index()
     {
         $this->view('index', [
-            'name' => 'WP DraftScripts Plugin'
+            'name' => 'Kamruzzaman'
         ]);
     }
 
-
-    public function settings()
+    public function customPost()
     {
         $this->view('settings');
     }
