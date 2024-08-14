@@ -2,7 +2,9 @@
 
 namespace WpDraftscripts\Action;
 
-class Enqueue
+use WpDraftscripts\Support\BaseApplication;
+
+class Enqueue extends BaseApplication
 {
     /**
      * Register services
@@ -17,7 +19,13 @@ class Enqueue
      */
     public function enqueue()
     {
-        wp_enqueue_style('wp-draftscripts', WP_DRAFTSCRIPTS_PLUGIN_URL . 'assets/css/style.css');
-        wp_enqueue_script('wp-draftscripts', WP_DRAFTSCRIPTS_PLUGIN_URL . 'assets/js/scripts.js');
+        wp_enqueue_style(
+            'wp-draftscripts',
+            "$this->pluginURL/assets/css/styles.css"
+        );
+        wp_enqueue_script(
+            'wp-draftscripts',
+            "$this->pluginURL/assets/js/scripts.js"
+        );
     }
 }

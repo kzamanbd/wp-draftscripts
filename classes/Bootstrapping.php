@@ -2,11 +2,11 @@
 
 namespace WpDraftscripts;
 
-use WpDraftscripts\Action\Admin;
 use WpDraftscripts\Action\CustomPostType;
 use WpDraftscripts\Action\Enqueue;
 use WpDraftscripts\Action\Pages;
 use WpDraftscripts\Action\SettingsLink;
+use WpDraftscripts\Services\AdminServices;
 
 class Bootstrapping
 {
@@ -24,11 +24,11 @@ class Bootstrapping
     public static function services()
     {
         return [
-            Admin::class,
+            Pages::class,
             Enqueue::class,
             SettingsLink::class,
-            Pages::class,
-            CustomPostType::class
+            CustomPostType::class,
+            AdminServices::class,
         ];
     }
 
