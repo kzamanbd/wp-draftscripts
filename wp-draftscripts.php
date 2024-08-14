@@ -31,9 +31,9 @@ define('WP_DRAFTSCRIPTS_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('WP_DRAFTSCRIPTS_PLUGIN_BASENAME', plugin_basename(__FILE__));
 
 
-use WpDraftscripts\Bootstrapping;
+use WpDraftScripts\Bootstrapping;
 
-if (class_exists('WpDraftscripts\Bootstrapping')) {
+if (class_exists('WpDraftScripts\Bootstrapping')) {
     Bootstrapping::init();
 }
 

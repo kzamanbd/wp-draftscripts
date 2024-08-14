@@ -1,6 +1,6 @@
 <?php
 
-namespace WpDraftscripts\Support;
+namespace WpDraftScripts\Support;
 
 class BaseApplication
 {

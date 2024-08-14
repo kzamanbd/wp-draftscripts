@@ -1,6 +1,6 @@
 <?php
 
-namespace WpDraftscripts;
+namespace WpDraftScripts;
 
 
 /**
@@ -9,7 +9,7 @@ namespace WpDraftscripts;
  * You can get the instance with the get_instance method
  * The get_instance method have to be implemented !
  * Class Singleton
- * @package WpDraftscripts
+ * @package WpDraftScripts
  */
 trait Singleton
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace WpDraftscripts\Services;
+namespace WpDraftScripts\Services;
 
 use WpDraftScripts\Action\Settings;
-use WpDraftscripts\Support\BaseApplication;
+use WpDraftScripts\Support\BaseApplication;
 
 class AdminServices extends BaseApplication
 {

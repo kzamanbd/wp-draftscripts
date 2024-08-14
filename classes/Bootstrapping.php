@@ -1,12 +1,12 @@
 <?php
 
-namespace WpDraftscripts;
+namespace WpDraftScripts;
 
-use WpDraftscripts\Action\CustomPostType;
-use WpDraftscripts\Action\Enqueue;
-use WpDraftscripts\Action\Pages;
-use WpDraftscripts\Action\SettingsLink;
-use WpDraftscripts\Services\AdminServices;
+use WpDraftScripts\Action\CustomPostType;
+use WpDraftScripts\Action\Enqueue;
+use WpDraftScripts\Action\Pages;
+use WpDraftScripts\Action\SettingsLink;
+use WpDraftScripts\Services\AdminServices;
 
 class Bootstrapping
 {

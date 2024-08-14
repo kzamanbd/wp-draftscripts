@@ -1,8 +1,8 @@
 <?php
 
-namespace WpDraftscripts\Action;
+namespace WpDraftScripts\Action;
 
-use WpDraftscripts\Support\BaseApplication;
+use WpDraftScripts\Support\BaseApplication;
 
 class SettingsLink extends BaseApplication
 {
