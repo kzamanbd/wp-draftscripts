@@ -1,0 +1,19 @@
+{
+    "name": "kzaman/wp-draftscripts",
+    "description": "A simple WordPress plugin to add custom scripts to the draft post.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "WpDraftscripts\\": "classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "KAMRUZZAMAN",
+            "email": "kzamanbn@gmail.com"
+        }
+    ],
+    "require": {}
+}
