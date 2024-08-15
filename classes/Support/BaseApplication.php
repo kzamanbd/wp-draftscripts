@@ -18,9 +18,9 @@ class BaseApplication
 
     public function view($view, $data = [])
     {
-        if (file_exists($this->pluginPath . 'views/' . $view . '.php')) {
+        if (file_exists($this->pluginPath . 'resources/views/' . $view . '.php')) {
             extract($data);
-            require_once $this->pluginPath . 'views/' . $view . '.php';
+            require_once $this->pluginPath . 'resources/views/' . $view . '.php';
         }
     }
 }
