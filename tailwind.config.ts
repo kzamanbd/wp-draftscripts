@@ -3,7 +3,13 @@ import form from '@tailwindcss/forms';
 /** @type {import('tailwindcss').Config} */
 
 export default {
-    content: ['./resources/**/*.{php,html,js,ts,vue,jsx,tsx}'],
+    important: true,
+    content: [
+        './resources/**/*.{php,html,js,ts,vue,jsx,tsx}',
+        './classes/**/*.{php,html}',
+        './includes/**/*.{php,html}',
+        './templates/**/*.{php,html}'
+    ],
     theme: {
         extend: {}
     },

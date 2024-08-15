@@ -2,7 +2,7 @@
 
 namespace WpDraftScripts\Support;
 
-class BaseApplication
+class BasePlugin
 {
     public string $version = '1.0.0';
     public string $pluginURL;

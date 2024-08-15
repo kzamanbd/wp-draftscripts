@@ -2,9 +2,9 @@
 
 namespace WpDraftScripts\Actions;
 
-use WpDraftScripts\Support\BaseApplication;
+use WpDraftScripts\Support\BasePlugin;
 
-class Enqueue extends BaseApplication
+class Enqueue extends BasePlugin
 {
     /**
      * Register services
@@ -21,11 +21,11 @@ class Enqueue extends BaseApplication
     {
         wp_enqueue_style(
             'wp-draftscripts',
-            "$this->pluginURL/assets/css/app.css"
+            "{$this->pluginURL}assets/css/app.css"
         );
         wp_enqueue_script(
             'wp-draftscripts',
-            "$this->pluginURL/assets/js/app.js"
+            "{$this->pluginURL}assets/js/app.js"
         );
     }
 }

@@ -3,14 +3,21 @@
 namespace WpDraftScripts\Services;
 
 use WpDraftScripts\Actions\Settings;
-use WpDraftScripts\Support\BaseApplication;
+use WpDraftScripts\Callbacks\AdminCallbacks;
+use WpDraftScripts\Support\BasePlugin;
 
-class AdminServices extends BaseApplication
+class AdminServices extends BasePlugin
 {
     /**
      * @var Settings $settings
      */
-    public $settings;
+    public Settings $settings;
+
+    /**
+     * @var AdminCallbacks $adminCallbacks
+     */
+
+    public AdminCallbacks $adminCallbacks;
 
     /**
      * @var array $pages
@@ -49,8 +56,11 @@ class AdminServices extends BaseApplication
     public function __construct()
     {
         parent::__construct();
+
         $this->settings = new Settings();
+        $this->adminCallbacks = new AdminCallbacks();
     }
+
     /**
      * Register the actions
      * @return void
@@ -77,7 +87,7 @@ class AdminServices extends BaseApplication
                 'menu_title' => 'DraftScripts',
                 'capability' => 'manage_options',
                 'menu_slug' => 'draftscripts',
-                'callback' => array($this, 'index'),
+                'callback' => array($this->adminCallbacks, 'dashboard'),
                 'icon_url' => 'dashicons-store',
                 'position' => 110,
             ]
@@ -90,7 +100,7 @@ class AdminServices extends BaseApplication
                 'menu_title' => 'CPT',
                 'capability' => 'manage_options',
                 'menu_slug' => 'draftscripts-cpt',
-                'callback' => array($this, 'settings')
+                'callback' => array($this->adminCallbacks, 'settings')
             ],
             [
                 'parent_slug' => 'draftscripts',
@@ -98,7 +108,7 @@ class AdminServices extends BaseApplication
                 'menu_title' => 'Settings',
                 'capability' => 'manage_options',
                 'menu_slug' => 'draftscripts-settings',
-                'callback' => array($this, 'settings')
+                'callback' => array($this->adminCallbacks, 'settings')
             ]
 
         ];
@@ -112,13 +122,49 @@ class AdminServices extends BaseApplication
     {
         $this->customFields = [
             [
-                'option_group' => 'draftscripts_options_group',
-                'option_name' => 'text_example',
-                'callback' => array($this, 'addedOptionsGroup'),
+                'option_group' => 'draftscripts_settings',
+                'option_name' => 'cpt_manager',
+                'callback' => array($this->adminCallbacks, 'checkboxSanitize'),
             ],
             [
-                'option_group' => 'draftscripts_options_group',
-                'option_name' => 'full_name',
+                'option_group' => 'draftscripts_settings',
+                'option_name' => 'texonomy_manager',
+                'callback' => array($this->adminCallbacks, 'checkboxSanitize'),
+            ],
+            [
+                'option_group' => 'draftscripts_settings',
+                'option_name' => 'media_widget',
+                'callback' => array($this->adminCallbacks, 'checkboxSanitize'),
+            ],
+            [
+                'option_group' => 'draftscripts_settings',
+                'option_name' => 'gallery_manager',
+                'callback' => array($this->adminCallbacks, 'checkboxSanitize'),
+            ],
+            [
+                'option_group' => 'draftscripts_settings',
+                'option_name' => 'testimonial_manager',
+                'callback' => array($this->adminCallbacks, 'checkboxSanitize'),
+            ],
+            [
+                'option_group' => 'draftscripts_settings',
+                'option_name' => 'templates_manager',
+                'callback' => array($this->adminCallbacks, 'checkboxSanitize'),
+            ],
+            [
+                'option_group' => 'draftscripts_settings',
+                'option_name' => 'login_manager',
+                'callback' => array($this->adminCallbacks, 'checkboxSanitize'),
+            ],
+            [
+                'option_group' => 'draftscripts_settings',
+                'option_name' => 'membership_manager',
+                'callback' => array($this->adminCallbacks, 'checkboxSanitize'),
+            ],
+            [
+                'option_group' => 'draftscripts_settings',
+                'option_name' => 'chat_manager',
+                'callback' => array($this->adminCallbacks, 'checkboxSanitize'),
             ]
         ];
 
@@ -126,75 +172,90 @@ class AdminServices extends BaseApplication
             [
                 'id' => 'draftscripts_index',
                 'title' => 'Settings',
-                'callback' => array($this, 'addedSectionGroup'),
+                'callback' => array($this->adminCallbacks, 'addedSectionGroup'),
                 'page' => 'draftscripts'
             ]
         ];
 
         $this->fields = [
             [
-                'id' => 'text_example',
-                'title' => 'Text Example',
-                'callback' => array($this, 'addedField'),
+                'id' => 'cpt_manager',
+                'title' => 'Activate CPT Manager',
+                'callback' => array($this->adminCallbacks, 'addedField'),
                 'section' => 'draftscripts_index',
                 'page' => 'draftscripts',
                 'args' => [
-                    'label_for' => 'text_example',
-                    'class' => 'regular-text',
-                    'option_name' => 'text_example'
+                    'label_for' => 'cpt_manager',
+                    'class' => 'checkbox',
+                    'option_name' => 'cpt_manager',
+                    'type' => 'checkbox'
                 ]
             ],
             [
-                'id' => 'full_name',
-                'title' => 'Full Name',
-                'callback' => array($this, 'addedField'),
+                'id' => 'texonomy_manager',
+                'title' => 'Activate Texonomy Manager',
+                'callback' => array($this->adminCallbacks, 'addedField'),
                 'section' => 'draftscripts_index',
                 'page' => 'draftscripts',
                 'args' => [
-                    'label_for' => 'full_name',
-                    'class' => 'regular-text',
-                    'option_name' => 'full_name'
+                    'label_for' => 'texonomy_manager',
+                    'class' => 'checkbox',
+                    'option_name' => 'texonomy_manager',
+                    'type' => 'checkbox'
+                ]
+            ],
+            [
+                'id' => 'media_widget',
+                'title' => 'Activate Media Widget',
+                'callback' => array($this->adminCallbacks, 'addedField'),
+                'section' => 'draftscripts_index',
+                'page' => 'draftscripts',
+                'args' => [
+                    'label_for' => 'media_widget',
+                    'class' => 'checkbox',
+                    'option_name' => 'media_widget',
+                    'type' => 'checkbox'
+                ]
+            ],
+            [
+                'id' => 'gallery_manager',
+                'title' => 'Activate Gallery Manager',
+                'callback' => array($this->adminCallbacks, 'addedField'),
+                'section' => 'draftscripts_index',
+                'page' => 'draftscripts',
+                'args' => [
+                    'label_for' => 'gallery_manager',
+                    'class' => 'checkbox',
+                    'option_name' => 'gallery_manager',
+                    'type' => 'checkbox'
+                ]
+            ],
+            [
+                'id' => 'testimonial_manager',
+                'title' => 'Activate Testimonial Manager',
+                'callback' => array($this->adminCallbacks, 'addedField'),
+                'section' => 'draftscripts_index',
+                'page' => 'draftscripts',
+                'args' => [
+                    'label_for' => 'testimonial_manager',
+                    'class' => 'checkbox',
+                    'option_name' => 'testimonial_manager',
+                    'type' => 'checkbox'
+                ]
+            ],
+            [
+                'id' => 'templates_manager',
+                'title' => 'Activate Templates Manager',
+                'callback' => array($this->adminCallbacks, 'addedField'),
+                'section' => 'draftscripts_index',
+                'page' => 'draftscripts',
+                'args' => [
+                    'label_for' => 'templates_manager',
+                    'class' => 'checkbox',
+                    'option_name' => 'templates_manager',
+                    'type' => 'checkbox'
                 ]
             ]
         ];
-    }
-
-    public function index()
-    {
-        $this->view('index', [
-            'name' => 'Kamruzzaman'
-        ]);
-    }
-
-    public function settings()
-    {
-        $this->view('settings');
-    }
-
-    public function addedOptionsGroup($input)
-    {
-        return $input;
-    }
-
-    public function addedSectionGroup()
-    {
-        echo 'Set your settings here';
-    }
-
-    public function addedField($args)
-    {
-        $name = $args['label_for'];
-        $class = $args['class'];
-        $option_name = $args['option_name'];
-        $value = esc_attr(get_option($option_name));
-        $type = isset($args['type']) ? $args['type'] : 'text';
-        $placeholder = isset($args['placeholder']) ? $args['placeholder'] : 'Write something here';
-        switch ($type) {
-            case 'textarea':
-                echo "<textarea id='$name' name='$option_name' class='$class' placeholder='$placeholder'>$value</textarea>";
-                break;
-            default:
-                echo "<input type='text' id='$name' name='$option_name' value='$value' class='$class' placeholder='$placeholder'>";
-        }
     }
 }

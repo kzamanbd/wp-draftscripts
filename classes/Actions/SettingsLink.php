@@ -2,9 +2,9 @@
 
 namespace WpDraftScripts\Actions;
 
-use WpDraftScripts\Support\BaseApplication;
+use WpDraftScripts\Support\BasePlugin;
 
-class SettingsLink extends BaseApplication
+class SettingsLink extends BasePlugin
 {
     public function register()
     {
