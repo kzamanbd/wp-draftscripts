@@ -1,6 +1,6 @@
 <?php
 
-namespace WpDraftScripts\Action;
+namespace WpDraftScripts\Actions;
 
 class Pages
 {

@@ -2,7 +2,7 @@
 
 namespace WpDraftScripts\Services;
 
-use WpDraftScripts\Action\Settings;
+use WpDraftScripts\Actions\Settings;
 use WpDraftScripts\Support\BaseApplication;
 
 class AdminServices extends BaseApplication
@@ -20,7 +20,15 @@ class AdminServices extends BaseApplication
 
     public function register()
     {
-        // add settings page
+
+        $this->setPages();
+        $this->settings->addPages($this->pages)
+            ->withSubPage($this->subPages, 'General')
+            ->register();
+    }
+
+    public function setPages()
+    {
         $this->pages = [
             [
                 'page_title' => 'WP DraftScripts Plugin',
@@ -33,7 +41,6 @@ class AdminServices extends BaseApplication
             ]
         ];
 
-        // add sub pages
         $this->subPages = [
             [
                 'parent_slug' => 'draftscripts',
@@ -53,10 +60,6 @@ class AdminServices extends BaseApplication
             ]
 
         ];
-
-        $this->settings->addPages($this->pages)
-            ->withSubPage($this->subPages, 'General')
-            ->register();
     }
 
     public function index()

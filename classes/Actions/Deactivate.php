@@ -1,12 +1,11 @@
 <?php
 
-namespace WpDraftScripts\Action;
+namespace WpDraftScripts\Actions;
 
-class Activate
+class Deactivate
 {
     public function register()
     {
-        (new CustomPostType())->custom_post_type();
         // flush rewrite rules
         flush_rewrite_rules();
     }

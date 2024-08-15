@@ -2,10 +2,10 @@
 
 namespace WpDraftScripts;
 
-use WpDraftScripts\Action\CustomPostType;
-use WpDraftScripts\Action\Enqueue;
-use WpDraftScripts\Action\Pages;
-use WpDraftScripts\Action\SettingsLink;
+use WpDraftScripts\Actions\CustomPostType;
+use WpDraftScripts\Actions\Enqueue;
+use WpDraftScripts\Actions\Pages;
+use WpDraftScripts\Actions\SettingsLink;
 use DirectoryIterator;
 
 class Bootstrapping
