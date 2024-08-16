@@ -36,6 +36,12 @@ class BasePlugin
 
     public array $optionsManagers = [];
 
+    /**
+     * Plugin option name
+     * @var string
+     */
+    public $pluginOptionName = 'draftscripts';
+
     public function __construct()
     {
         $this->pluginURL = WP_DRAFTSCRIPTS_PLUGIN_URL;

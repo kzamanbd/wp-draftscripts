@@ -6,7 +6,7 @@ use WpDraftScripts\Actions\Settings;
 use WpDraftScripts\Callbacks\DashboardCallbacks;
 use WpDraftScripts\Support\BasePlugin;
 
-class DashboardServices extends BasePlugin
+class DashboardSettings extends BasePlugin
 {
     /**
      * @var Settings $settings
@@ -23,12 +23,6 @@ class DashboardServices extends BasePlugin
      * @var array $pages
      */
     public array $pages = [];
-
-    /**
-     * @var array $subPages
-     */
-
-    public array $subPages = [];
 
     /**
      * @var array $customFields
@@ -56,7 +50,6 @@ class DashboardServices extends BasePlugin
     public function __construct()
     {
         parent::__construct();
-
         $this->settings = new Settings();
         $this->callbacks = new DashboardCallbacks();
     }
@@ -72,7 +65,6 @@ class DashboardServices extends BasePlugin
         $this->setCustomFields();
 
         $this->settings->addPages($this->pages)
-            ->withSubPage($this->subPages, 'General')
             ->addCustomFields($this->customFields)
             ->addSections($this->sections)
             ->addFields($this->fields)
@@ -83,7 +75,7 @@ class DashboardServices extends BasePlugin
     {
         $this->pages = [
             [
-                'page_title' => 'WP DraftScripts Plugin',
+                'page_title' => 'WP DraftScripts',
                 'menu_title' => 'DraftScripts',
                 'capability' => 'manage_options',
                 'menu_slug' => 'draftscripts',
@@ -91,26 +83,6 @@ class DashboardServices extends BasePlugin
                 'icon_url' => 'dashicons-store',
                 'position' => 110,
             ]
-        ];
-
-        $this->subPages = [
-            [
-                'parent_slug' => 'draftscripts',
-                'page_title' => 'Custom Post Type',
-                'menu_title' => 'CPT',
-                'capability' => 'manage_options',
-                'menu_slug' => 'draftscripts-cpt',
-                'callback' => array($this->callbacks, 'settings')
-            ],
-            [
-                'parent_slug' => 'draftscripts',
-                'page_title' => 'Settings',
-                'menu_title' => 'Settings',
-                'capability' => 'manage_options',
-                'menu_slug' => 'draftscripts-settings',
-                'callback' => array($this->callbacks, 'settings')
-            ]
-
         ];
     }
 

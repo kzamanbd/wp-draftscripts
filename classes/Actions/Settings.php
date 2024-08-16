@@ -37,12 +37,11 @@ class Settings
      */
     public function register()
     {
-        if (!empty($this->pages)) {
+        if (!empty($this->pages) || !empty($this->subPages)) {
             add_action('admin_menu', array($this, 'addAdminMenu'));
         }
 
         if (!empty($this->customFields)) {
-
             add_action('admin_init', array($this, 'registerCustomFields'));
         }
     }
@@ -99,24 +98,24 @@ class Settings
 
     public function withSubPage(array $pages = [], string $title = null)
     {
-        if (empty($this->pages)) {
-            return $this;
+        $parentSupPage = [];
+
+        if (!empty($this->pages)) {
+            $parent = $this->pages[0];
+
+            $parentSupPage = [
+                [
+                    'parent_slug' => $parent['menu_slug'],
+                    'page_title' => $parent['page_title'],
+                    'menu_title' => $title ? $title : $parent['menu_title'],
+                    'capability' => $parent['capability'],
+                    'menu_slug' => $parent['menu_slug'],
+                    'callback' => $parent['callback']
+                ]
+            ];
         }
 
-        $parent = $this->pages[0];
-
-        $subPage = [
-            [
-                'parent_slug' => $parent['menu_slug'],
-                'page_title' => $parent['page_title'],
-                'menu_title' => $title ? $title : $parent['menu_title'],
-                'capability' => $parent['capability'],
-                'menu_slug' => $parent['menu_slug'],
-                'callback' => $parent['callback']
-            ]
-        ];
-
-        $this->subPages = array_merge($subPage, $pages);
+        $this->subPages = array_merge($parentSupPage, $pages);
 
         return $this;
     }

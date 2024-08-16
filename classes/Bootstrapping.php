@@ -2,11 +2,11 @@
 
 namespace WpDraftScripts;
 
-use WpDraftScripts\Actions\CustomPostType;
-use WpDraftScripts\Actions\Enqueue;
-use WpDraftScripts\Actions\Pages;
-use WpDraftScripts\Actions\SettingsLink;
 use DirectoryIterator;
+use WpDraftScripts\Actions\Enqueue;
+use WpDraftScripts\Actions\SettingsLink;
+use WpDraftScripts\Services\CustomPostType;
+use WpDraftScripts\Services\DashboardSettings;
 
 class Bootstrapping
 {
@@ -23,10 +23,10 @@ class Bootstrapping
     public static function actions()
     {
         return [
-            Pages::class,
             Enqueue::class,
             SettingsLink::class,
-            CustomPostType::class,
+            DashboardSettings::class,
+            CustomPostType::class
         ];
     }
 
@@ -68,7 +68,6 @@ class Bootstrapping
                 $service->register();
             }
         }
-        self::services();
 
         return self::instance(__CLASS__);
     }
