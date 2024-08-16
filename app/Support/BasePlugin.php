@@ -68,4 +68,16 @@ class BasePlugin
             require_once $this->pluginPath . 'resources/views/' . $view . '.php';
         }
     }
+
+    public function isActivated(string $option)
+    {
+
+        $options = get_option($this->pluginOptionName);
+
+        if (!isset($options[$option]) || !$options[$option]) {
+            return false;
+        }
+
+        return true;
+    }
 }

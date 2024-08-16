@@ -3,10 +3,9 @@
 namespace WpDraftScripts\Services;
 
 use WpDraftScripts\Actions\Settings;
-use WpDraftScripts\Callbacks\DashboardCallbacks;
 use WpDraftScripts\Support\BasePlugin;
 
-class CustomPostType extends BasePlugin
+class GalleryManager extends BasePlugin
 {
     /**
      * @var Settings $settings
@@ -14,7 +13,7 @@ class CustomPostType extends BasePlugin
     public $settings;
 
     /**
-     * CustomPostType constructor.
+     * GalleryManager constructor.
      */
 
     public function __construct()
@@ -30,35 +29,22 @@ class CustomPostType extends BasePlugin
     public function register()
     {
 
-        if (!$this->isActivated('cpt_manager')) {
+        if (!$this->isActivated('gallery_manager')) {
             return;
         }
 
         $pages = [
             [
                 'parent_slug' => 'draftscripts',
-                'page_title' => 'Custom Post Type',
-                'menu_title' => 'CPT Manager',
+                'page_title' => 'Gallery Manager',
+                'menu_title' => 'Gallery Manager',
                 'capability' => 'manage_options',
-                'menu_slug' => 'draftscripts-cpt',
+                'menu_slug' => 'draftscripts-gallery',
                 'callback' => array($this, 'callback')
             ]
         ];
 
         $this->settings->addSubPages($pages)->register();
-
-        add_action('init', array($this, 'activate'));
-    }
-
-    public function activate()
-    {
-        register_post_type(
-            'product',
-            [
-                'public' => true,
-                'label' => 'Products',
-            ]
-        );
     }
 
     public function callback()
