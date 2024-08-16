@@ -65,6 +65,7 @@ class DashboardSettings extends BasePlugin
         $this->setCustomFields();
 
         $this->settings->addPages($this->pages)
+            ->withSubPage('Dashboard')
             ->addCustomFields($this->customFields)
             ->addSections($this->sections)
             ->addFields($this->fields)

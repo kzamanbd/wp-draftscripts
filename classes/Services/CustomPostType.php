@@ -59,7 +59,7 @@ class CustomPostType extends BasePlugin
             ]
         ];
 
-        $this->settings->withSubPage($this->subPages, 'Dashboard')->register();
+        $this->settings->addSubPages($this->subPages)->register();
 
         add_action('init', array($this, 'custom_post_type'));
     }

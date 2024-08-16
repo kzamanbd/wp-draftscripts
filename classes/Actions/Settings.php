@@ -91,32 +91,42 @@ class Settings
 
     /**
      * Add the sub pages
-     * @param array $pages
      * @param string|null $title
      * @return $this
      */
 
-    public function withSubPage(array $pages = [], string $title = null)
+    public function withSubPage(string $title = null)
     {
-        $parentSupPage = [];
-
-        if (!empty($this->pages)) {
-            $parent = $this->pages[0];
-
-            $parentSupPage = [
-                [
-                    'parent_slug' => $parent['menu_slug'],
-                    'page_title' => $parent['page_title'],
-                    'menu_title' => $title ? $title : $parent['menu_title'],
-                    'capability' => $parent['capability'],
-                    'menu_slug' => $parent['menu_slug'],
-                    'callback' => $parent['callback']
-                ]
-            ];
+        if (empty($this->pages)) {
+            return $this;
         }
 
-        $this->subPages = array_merge($parentSupPage, $pages);
+        $parent = $this->pages[0];
 
+        $subPages = [
+            [
+                'parent_slug' => $parent['menu_slug'],
+                'page_title' => $parent['page_title'],
+                'menu_title' => $title ? $title : $parent['menu_title'],
+                'capability' => $parent['capability'],
+                'menu_slug' => $parent['menu_slug'],
+                'callback' => $parent['callback']
+            ]
+        ];
+        $this->subPages = $subPages;
+
+        return $this;
+    }
+
+    /**
+     * Add the sub pages
+     * @param array $pages
+     * @return $this
+     */
+
+    public function addSubPages(array $pages)
+    {
+        $this->subPages = array_merge($this->subPages, $pages);
         return $this;
     }
 
