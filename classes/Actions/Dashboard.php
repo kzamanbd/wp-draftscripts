@@ -1,12 +1,12 @@
 <?php
 
-namespace WpDraftScripts\Services;
+namespace WpDraftScripts\Actions;
 
 use WpDraftScripts\Actions\Settings;
 use WpDraftScripts\Callbacks\DashboardCallbacks;
 use WpDraftScripts\Support\BasePlugin;
 
-class DashboardSettings extends BasePlugin
+class Dashboard extends BasePlugin
 {
     /**
      * @var Settings $settings

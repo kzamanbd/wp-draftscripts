@@ -3,10 +3,10 @@
 namespace WpDraftScripts;
 
 use DirectoryIterator;
+use WpDraftScripts\Actions\Dashboard;
 use WpDraftScripts\Actions\Enqueue;
 use WpDraftScripts\Actions\SettingsLink;
 use WpDraftScripts\Services\CustomPostType;
-use WpDraftScripts\Services\DashboardSettings;
 
 class Bootstrapping
 {
@@ -25,8 +25,7 @@ class Bootstrapping
         return [
             Enqueue::class,
             SettingsLink::class,
-            DashboardSettings::class,
-            CustomPostType::class
+            Dashboard::class
         ];
     }
 
@@ -68,6 +67,8 @@ class Bootstrapping
                 $service->register();
             }
         }
+
+        self::services();
 
         return self::instance(__CLASS__);
     }
