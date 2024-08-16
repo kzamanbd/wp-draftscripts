@@ -6,7 +6,6 @@ use DirectoryIterator;
 use WpDraftScripts\Actions\Dashboard;
 use WpDraftScripts\Actions\Enqueue;
 use WpDraftScripts\Actions\SettingsLink;
-use WpDraftScripts\Services\CustomPostType;
 
 class Bootstrapping
 {
