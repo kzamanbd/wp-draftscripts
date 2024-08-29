@@ -2,13 +2,15 @@
 
 /**
  * @package WPDraftScripts
+ * @version 1.0.0
+ * @link https://draftscripts.com/wp-plugin/wp-draftscripts
  */
 /**
  * Plugin Name: WP DraftScripts
  * Plugin URI: https://draftscripts.com/wp-plugin/wp-draftscripts
  * Description: This is a custom plugin for DraftScripts WordPress Plugin Development.
- * Version: 1.0
- * Author: DraftScripts
+ * Version: 1.0.0
+ * Author: Kamruzzaman
  * Author URI: https://draftscripts.com/wp-plugin
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
