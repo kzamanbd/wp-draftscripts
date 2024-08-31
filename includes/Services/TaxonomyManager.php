@@ -3,7 +3,7 @@
 namespace WpDraftScripts\Services;
 
 use WpDraftScripts\Actions\Settings;
-use WpDraftScripts\Support\BasePlugin;
+use WpDraftScripts\BasePlugin;
 
 class TaxonomyManager extends BasePlugin
 {

@@ -3,9 +3,9 @@
 namespace WpDraftScripts\Services;
 
 use WpDraftScripts\Actions\Settings;
-use WpDraftScripts\Support\BasePlugin;
+use WpDraftScripts\BasePlugin;
 
-class TestimonialManager extends BasePlugin
+class AuthManager extends BasePlugin
 {
     /**
      * @var Settings $settings
@@ -13,7 +13,7 @@ class TestimonialManager extends BasePlugin
     public $settings;
 
     /**
-     * TestimonialManager constructor.
+     * AuthManager constructor.
      */
 
     public function __construct()
@@ -29,17 +29,17 @@ class TestimonialManager extends BasePlugin
     public function register()
     {
 
-        if (!$this->isActivated('testimonial_manager')) {
+        if (!$this->isActivated('login_manager')) {
             return;
         }
 
         $pages = [
             [
                 'parent_slug' => 'draftscripts',
-                'page_title' => 'Testimonial Manager',
-                'menu_title' => 'Testimonial Manager',
+                'page_title' => 'Auth Manager',
+                'menu_title' => 'Auth Manager',
                 'capability' => 'manage_options',
-                'menu_slug' => 'draftscripts-testimonial',
+                'menu_slug' => 'draftscripts-auth',
                 'callback' => array($this, 'callback')
             ]
         ];

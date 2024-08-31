@@ -3,9 +3,9 @@
 namespace WpDraftScripts\Services;
 
 use WpDraftScripts\Actions\Settings;
-use WpDraftScripts\Support\BasePlugin;
+use WpDraftScripts\BasePlugin;
 
-class TemplatesManager extends BasePlugin
+class MediaWidget extends BasePlugin
 {
     /**
      * @var Settings $settings
@@ -13,7 +13,7 @@ class TemplatesManager extends BasePlugin
     public $settings;
 
     /**
-     * TemplatesManager constructor.
+     * MediaWidget constructor.
      */
 
     public function __construct()
@@ -29,17 +29,17 @@ class TemplatesManager extends BasePlugin
     public function register()
     {
 
-        if (!$this->isActivated('templates_manager')) {
+        if (!$this->isActivated('media_widget')) {
             return;
         }
 
         $pages = [
             [
                 'parent_slug' => 'draftscripts',
-                'page_title' => 'Template Manager',
-                'menu_title' => 'Template Manager',
+                'page_title' => 'Media Widget Manager',
+                'menu_title' => 'Media Widget',
                 'capability' => 'manage_options',
-                'menu_slug' => 'draftscripts-template',
+                'menu_slug' => 'draftscripts-media-widget',
                 'callback' => array($this, 'callback')
             ]
         ];

@@ -3,7 +3,7 @@
 
 namespace WpDraftScripts\Callbacks;
 
-use WpDraftScripts\Support\BasePlugin;
+use WpDraftScripts\BasePlugin;
 
 class DashboardCallbacks extends BasePlugin
 {

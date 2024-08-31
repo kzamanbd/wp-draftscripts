@@ -2,7 +2,7 @@
 
 namespace WpDraftScripts\Actions;
 
-use WpDraftScripts\Support\BasePlugin;
+use WpDraftScripts\BasePlugin;
 
 class Enqueue extends BasePlugin
 {

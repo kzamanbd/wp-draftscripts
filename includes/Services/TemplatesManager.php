@@ -3,10 +3,9 @@
 namespace WpDraftScripts\Services;
 
 use WpDraftScripts\Actions\Settings;
-use WpDraftScripts\Callbacks\DashboardCallbacks;
-use WpDraftScripts\Support\BasePlugin;
+use WpDraftScripts\BasePlugin;
 
-class CustomPostType extends BasePlugin
+class TemplatesManager extends BasePlugin
 {
     /**
      * @var Settings $settings
@@ -14,7 +13,7 @@ class CustomPostType extends BasePlugin
     public $settings;
 
     /**
-     * CustomPostType constructor.
+     * TemplatesManager constructor.
      */
 
     public function __construct()
@@ -30,36 +29,24 @@ class CustomPostType extends BasePlugin
     public function register()
     {
 
-        if (!$this->isActivated('cpt_manager')) {
+        if (!$this->isActivated('templates_manager')) {
             return;
         }
 
         $pages = [
             [
                 'parent_slug' => 'draftscripts',
-                'page_title' => 'Custom Post Type',
-                'menu_title' => 'CPT Manager',
+                'page_title' => 'Template Manager',
+                'menu_title' => 'Template Manager',
                 'capability' => 'manage_options',
-                'menu_slug' => 'draftscripts-cpt',
+                'menu_slug' => 'draftscripts-template',
                 'callback' => array($this, 'callback')
             ]
         ];
 
         $this->settings->addSubPages($pages)->register();
-
-        add_action('init', array($this, 'activate'));
     }
 
-    public function activate()
-    {
-        register_post_type(
-            'product',
-            [
-                'public' => true,
-                'label' => 'Products',
-            ]
-        );
-    }
 
     public function callback()
     {

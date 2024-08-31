@@ -7,7 +7,7 @@ use WpDraftScripts\Actions\Dashboard;
 use WpDraftScripts\Actions\Enqueue;
 use WpDraftScripts\Actions\SettingsLink;
 
-class Bootstrapping
+class Application
 {
 
     public static function init()

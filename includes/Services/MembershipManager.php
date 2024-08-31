@@ -3,9 +3,9 @@
 namespace WpDraftScripts\Services;
 
 use WpDraftScripts\Actions\Settings;
-use WpDraftScripts\Support\BasePlugin;
+use WpDraftScripts\BasePlugin;
 
-class ChatManager extends BasePlugin
+class MembershipManager extends BasePlugin
 {
     /**
      * @var Settings $settings
@@ -13,7 +13,7 @@ class ChatManager extends BasePlugin
     public $settings;
 
     /**
-     * ChatManager constructor.
+     * MembershipManager constructor.
      */
 
     public function __construct()
@@ -29,17 +29,17 @@ class ChatManager extends BasePlugin
     public function register()
     {
 
-        if (!$this->isActivated('chat_manager')) {
+        if (!$this->isActivated('membership_manager')) {
             return;
         }
 
         $pages = [
             [
                 'parent_slug' => 'draftscripts',
-                'page_title' => 'Chat Manager',
-                'menu_title' => 'Chat Manager',
+                'page_title' => 'Membership Manager',
+                'menu_title' => 'Membership Manager',
                 'capability' => 'manage_options',
-                'menu_slug' => 'draftscripts-chat',
+                'menu_slug' => 'draftscripts-membership',
                 'callback' => array($this, 'callback')
             ]
         ];

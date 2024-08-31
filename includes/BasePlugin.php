@@ -1,6 +1,6 @@
 <?php
 
-namespace WpDraftScripts\Support;
+namespace WpDraftScripts;
 
 class BasePlugin
 {

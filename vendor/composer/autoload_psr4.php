@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'WpDraftScripts\\' => array($baseDir . '/app'),
+    'WpDraftScripts\\' => array($baseDir . '/includes'),
 );

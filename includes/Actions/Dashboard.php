@@ -4,7 +4,7 @@ namespace WpDraftScripts\Actions;
 
 use WpDraftScripts\Actions\Settings;
 use WpDraftScripts\Callbacks\DashboardCallbacks;
-use WpDraftScripts\Support\BasePlugin;
+use WpDraftScripts\BasePlugin;
 
 class Dashboard extends BasePlugin
 {
