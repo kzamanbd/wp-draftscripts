@@ -1,5 +1,5 @@
 {
-    "name": "wp-draftscripts",
+    "name": "wp-plugin",
     "version": "1.0.0",
     "description": "This plugin is a collection of scripts that can be used to manage your WordPress site. It is designed to be used in a development environment and not in a production environment.",
     "main": "index.js",
@@ -10,10 +10,6 @@
         "preview": "vite preview"
     },
     "devDependencies": {
-        "@tailwindcss/forms": "^0.5.7",
-        "autoprefixer": "^10.4.20",
-        "postcss": "^8.4.41",
-        "tailwindcss": "^3.4.10",
         "typescript": "^5.5.3",
         "vite": "^5.4.1"
     },

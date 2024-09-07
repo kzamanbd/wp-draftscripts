@@ -34,7 +34,7 @@ class BasePlugin
      * @var array
      */
 
-    public array $optionsManagers = [];
+    public array $optionsManagers = [  ];
 
     /**
      * Plugin option name
@@ -49,32 +49,32 @@ class BasePlugin
         $this->pluginBaseName = WP_DRAFTSCRIPTS_PLUGIN_BASENAME;
 
         $this->optionsManagers = [
-            'cpt_manager' => 'CPT Manager',
-            'taxonomy_manager' => 'Taxonomy Manager',
-            'media_widget' => 'Media Widget',
-            'gallery_manager' => 'Gallery Manager',
+            'cpt_manager'         => 'CPT Manager',
+            'taxonomy_manager'    => 'Taxonomy Manager',
+            'media_widget'        => 'Media Widget',
+            'gallery_manager'     => 'Gallery Manager',
             'testimonial_manager' => 'Testimonial Manager',
-            'templates_manager' => 'Templates Manager',
-            'login_manager' => 'Login Manager',
-            'membership_manager' => 'Membership Manager',
-            'chat_manager' => 'Chat Manager',
-        ];
+            'templates_manager'   => 'Templates Manager',
+            'login_manager'       => 'Login Manager',
+            'membership_manager'  => 'Membership Manager',
+            'chat_manager'        => 'Chat Manager',
+         ];
     }
 
-    public function view($view, $data = [])
+    public function view( $view, $data = [  ] )
     {
-        if (file_exists($this->pluginPath . 'resources/views/' . $view . '.php')) {
-            extract($data);
-            require_once $this->pluginPath . 'resources/views/' . $view . '.php';
+        if ( file_exists( $this->pluginPath . 'views/' . $view . '.php' ) ) {
+            extract( $data );
+            require_once $this->pluginPath . 'views/' . $view . '.php';
         }
     }
 
-    public function isActivated(string $option)
+    public function isActivated( string $option )
     {
 
-        $options = get_option($this->pluginOptionName);
+        $options = get_option( $this->pluginOptionName );
 
-        if (!isset($options[$option]) || !$options[$option]) {
+        if ( !isset( $options[ $option ] ) || !$options[ $option ] ) {
             return false;
         }
 

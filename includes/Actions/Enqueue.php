@@ -21,11 +21,11 @@ class Enqueue extends BasePlugin
     {
         wp_enqueue_style(
             'wp-draftscripts',
-            "{$this->pluginURL}assets/css/app.css"
+            "{$this->pluginURL}assets/build/css/app.css"
         );
         wp_enqueue_script(
             'wp-draftscripts',
-            "{$this->pluginURL}assets/js/app.js"
+            "{$this->pluginURL}assets/build/js/app.js"
         );
     }
 }

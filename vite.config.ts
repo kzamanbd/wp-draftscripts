@@ -2,9 +2,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     build: {
-        outDir: 'assets',
+        outDir: 'assets/build',
         rollupOptions: {
-            input: ['resources/js/app.ts', 'resources/css/app.css'],
+            input: ['assets/js/app.ts', 'assets/css/app.css'],
             output: {
                 assetFileNames: (chunkInfo: any) => {
                     let outDir = '';
